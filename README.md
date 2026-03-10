@@ -11,5 +11,5 @@ Bài 1
 - Thêm được menu tới customer.request trong giao diện opportunity
 - Thêm ngăn cách hành động thêm, sửa, xóa với customer.request trong ir.model.access.csv
 - Thêm thông báo khóa hành động thêm/sửa/xóa với opportunity không còn new
-### Vướng mắc: chưa chỉnh cho các trường trong opportunity thành readonly được (nhưng vẫn chặn được edit)
-### Công việc còn lại của bài 1: tạo bảng giá và làm các yêu cầu bổ sung
+- Vướng mắc: chưa chỉnh cho các trường trong opportunity thành readonly được (nhưng vẫn chặn được edit)
+- Công việc còn lại của bài 1: tạo bảng giá và làm các yêu cầu bổ sung
