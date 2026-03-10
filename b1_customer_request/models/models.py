@@ -1,8 +1,5 @@
-from email.policy import default
-import re
-
-from odoo import models, fields, api
-from odoo.orm.domains import operator_optimization
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class CustomerRequest(models.Model):
@@ -35,6 +32,18 @@ class CrmLead(models.Model):
                 price = request.product_id.list_price or 0.0
                 total += request.quantity * price
             lead.revenue = total
+
+    def write(self, vals):
+        for lead in self:
+            if lead.stage_id.sequence > 1 and 'stage_id' not in vals:
+                raise UserError("You cannot modify this record once it has left the New stage.")
+        return super().write(vals)
+    
+    def unlink(self):
+        for lead in self:
+            if lead.stage_id.sequence > 1:
+                raise UserError("You cannot delete this record once it has left the New stage.")
+        return super().unlink()
             
     
 

@@ -14,5 +14,14 @@
         </field>
     </record>
 
-    
+    <record id="view_crm_lead_form_readonly_lock" model="ir.ui.view">
+        <field name="name">crm.lead.form.readonly.lock</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//field" position="attributes">
+                <attribute name="readonly">stage_id and stage_id.sequence > 1</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
