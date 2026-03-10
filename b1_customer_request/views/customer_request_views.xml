@@ -1,0 +1,67 @@
+<odoo>
+  <data>
+  <!-- customer request lists, form, menu action -->
+    <record id="view_b1_customer_request_form" model="ir.ui.view">
+      <field name="name">customer.request.form</field>
+      <field name="model">customer.request</field>
+      <field name="arch" type="xml">
+        <form string="Customer Request">
+          <sheet>
+            <group>
+              <field name="product_id"/>
+              <field name='opportunity_id'/>
+              <field name="description"/>
+              <field name="date"/>
+              <field name="quantity"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_customer_request_list" model="ir.ui.view">
+      <field name="name">customer.request.list</field>
+      <field name="model">customer.request</field>
+      <field name="arch" type="xml">
+        <list string="Customer Requests">
+          <field name="product_id"/>
+          <field name='opportunity_id'/>
+          <field name="description"/>
+          <field name="date"/>
+          <field name="quantity"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="action_customer_request" model="ir.actions.act_window">
+      <field name="name">Customer Requests</field>
+      <field name="res_model">customer.request</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_customer_request_root" 
+          name="Customer Requests" 
+          parent="crm.crm_menu_root"
+          action="action_customer_request" 
+          sequence="10"/>
+
+
+    <!-- <record id="view_crm_lead_form_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.request</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+        
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='expected_revenue']" position="after">
+                <field name="request_ids"/>
+                <field name="sale_amount"/>
+                <field name="revenue"/>
+            </xpath>
+        </field>
+    </record> -->
+    
+    
+
+
+  </data>
+</odoo>
