@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_customer_request_admin,b1_customer_request_admin,model_customer_request,,1,1,1,1
 access_customer_request_user,b1_customer_request_user,model_customer_request,,1,0,0,0
+access_customer_request_import_wizard_user,b1_customer_request_import_wizard_user,model_customer_request_import_wizard,,1,1,1,1

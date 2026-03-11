@@ -1,5 +1,5 @@
 {
-    'name': "b1_customer_request",
+    'name': "b2_purchase_request",
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
@@ -17,19 +17,15 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'crm', 'sale_management', 'purchase', 'sale_crm'],
+    'depends': ['base', 'purchase', 'hr', 'product'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/customer_request_views.xml',
-        'views/customer_request_import_wizard_view.xml',
-        'views/crm_views.xml',
+        'views/purchase_request_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
     ],
-    'application': True,
-    'installable': True,
 }
 

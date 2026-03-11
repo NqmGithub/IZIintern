@@ -4,7 +4,18 @@
         <field name="model">crm.lead</field>
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <field name="stage_id" invisible="1"/>
+                <field name="is_stage_past_new" invisible="1"/>
+            </xpath>
             <xpath expr="//field[@name='expected_revenue']" position="after">
+                <header name="import_header">
+                    <button name="%(action_customer_request_import_wizard)d"
+                            string="Import Requests From Excel"
+                            type="action"
+                            class="btn-secondary"
+                            invisible="is_stage_past_new"/>
+                </header>
                 <group name="customer_request_group">
                     <field name="request_ids"/>
                     <field name="sale_amount"/>
@@ -20,7 +31,7 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form//field" position="attributes">
-                <attribute name="readonly">stage_id and stage_id.sequence > 1</attribute>
+                <attribute name="readonly">is_stage_past_new</attribute>
             </xpath>
         </field>
     </record>

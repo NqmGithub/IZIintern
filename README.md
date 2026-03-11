@@ -13,3 +13,13 @@ Bài 1
 - Thêm thông báo khóa hành động thêm/sửa/xóa với opportunity không còn new
 - Vướng mắc: chưa chỉnh cho các trường trong opportunity thành readonly được (nhưng vẫn chặn được edit)
 - Công việc còn lại của bài 1: tạo bảng giá và làm các yêu cầu bổ sung
+
+## Ngày 3:
+Bài 1
+- Chỉnh sửa được chức năng bảng giá đẩy thông tin customer.request vào
+- Thêm chức năng import customer.request từ excel ở trong lead
+- Tạo được API tạo lead gồm đủ thông tin như trong đề bài
+- Bài 1 cơ bản đã xong
+Bài 2 
+- Tạo được models của purchase.request và purchase.request.line 
+- Thêm menu xem danh sách purchase request

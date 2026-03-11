@@ -8,7 +8,7 @@
         <form string="Customer Request">
           <sheet>
             <group>
-              <field name="product_id"/>
+              <field name="product_id" options="{'no_create': True, 'no_open': True}"/>
               <field name='opportunity_id'/>
               <field name="description"/>
               <field name="date"/>
@@ -44,24 +44,6 @@
           parent="crm.crm_menu_root"
           action="action_customer_request" 
           sequence="10"/>
-
-
-    <!-- <record id="view_crm_lead_form_inherit" model="ir.ui.view">
-        <field name="name">crm.lead.form.inherit.request</field>
-        <field name="model">crm.lead</field>
-        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
-        
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='expected_revenue']" position="after">
-                <field name="request_ids"/>
-                <field name="sale_amount"/>
-                <field name="revenue"/>
-            </xpath>
-        </field>
-    </record> -->
-    
-    
-
 
   </data>
 </odoo>

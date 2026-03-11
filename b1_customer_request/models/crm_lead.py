@@ -2,22 +2,18 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
-class CustomerRequest(models.Model):
-    _name = 'customer.request'
-    _description = 'Customer Request'
-
-    product_id = fields.Many2one('product.template', string='Product', required=True)
-    opportunity_id = fields.Many2one('crm.lead', string='Opportunity', required=True)
-    date = fields.Date(string='Date', default=fields.Date.context_today, required=True)
-    description = fields.Text(string='Description')
-    quantity = fields.Float(string='Quantity', default=1.0, required=True)
-
 class CrmLead(models.Model):
     _inherit = 'crm.lead'
 
     request_ids = fields.One2many('customer.request', 'opportunity_id', string='Customer Requests')
     sale_amount = fields.Float(string='Sale Amount', compute='_compute_sale_amount')
     revenue = fields.Float(string='Revenue', compute='_compute_revenue')
+    is_stage_past_new = fields.Boolean(compute='_compute_is_stage_past_new')
+
+    @api.depends('stage_id.sequence')
+    def _compute_is_stage_past_new(self):
+        for lead in self:
+            lead.is_stage_past_new = bool(lead.stage_id and lead.stage_id.sequence > 1)
 
     @api.depends('request_ids.quantity')
     def _compute_sale_amount(self):
@@ -33,6 +29,27 @@ class CrmLead(models.Model):
                 total += request.quantity * price
             lead.revenue = total
 
+    def _prepare_opportunity_quotation_context(self):
+        context = super()._prepare_opportunity_quotation_context()
+        self.ensure_one()
+
+        order_lines = []
+        for request in self.request_ids:
+            variant = request.product_id.product_variant_id
+            if not variant:
+                continue
+            order_lines.append((0, 0, {
+                'product_id': variant.id,
+                'name': request.description or request.product_id.name,
+                'product_uom_qty': request.quantity,
+                'price_unit': variant.lst_price,
+                'product_uom_id': variant.uom_id.id,
+            }))
+
+        if order_lines:
+            context['default_order_line'] = order_lines
+        return context
+
     def write(self, vals):
         for lead in self:
             if lead.stage_id.sequence > 1 and 'stage_id' not in vals:
@@ -44,8 +61,3 @@ class CrmLead(models.Model):
             if lead.stage_id.sequence > 1:
                 raise UserError("You cannot delete this record once it has left the New stage.")
         return super().unlink()
-            
-    
-
-
-

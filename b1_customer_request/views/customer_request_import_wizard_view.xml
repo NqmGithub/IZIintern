@@ -1,0 +1,29 @@
+<odoo>
+    <record id="action_customer_request_import_wizard" model="ir.actions.act_window">
+        <field name="name">Import Requests from Excel</field>
+        <field name="res_model">customer.request.import.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_customer_request_import_wizard_form" model="ir.ui.view">
+        <field name="name">customer.request.import.wizard.form</field>
+        <field name="model">customer.request.import.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>Import Customer Requests from Excel</h1>
+                    <p>Upload an Excel file with the following columns: Product ID, Description, Date, Quantity.</p>
+                    <group>
+                        <field name="excel_file" filename="file_name"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_import_requests" string="Import" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
