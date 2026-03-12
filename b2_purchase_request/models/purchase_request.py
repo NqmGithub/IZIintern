@@ -1,10 +1,12 @@
-from odoo import fields, models, api
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class PurchaseRequest(models.Model):
     _name = 'purchase.request'
     _description = 'Purchase Request'
     
+    name = fields.Char(string='Request Reference', required=True, copy=False, readonly=True, default=lambda self: 'New')
     department_id = fields.Many2one('hr.department', string='Department', required=True)
     requester_id = fields.Many2one('res.users', string='Requested By', default=lambda self: self.env.user, required=True)
     approver_id = fields.Many2one('res.users', string='Approved By')
@@ -20,6 +22,7 @@ class PurchaseRequest(models.Model):
     ], string='Status', default='draft', tracking=True)
     total_quantity = fields.Float(string='Total Quantity', compute='_compute_total_quantity')
     total_amount = fields.Float(string='Total Amount', compute='_compute_total_amount')
+    canceled_reason = fields.Text(string='Reason for Cancellation')
 
     @api.depends('request_line_ids.quantity')
     def _compute_total_quantity(self):
@@ -30,3 +33,46 @@ class PurchaseRequest(models.Model):
     def _compute_total_amount(self):
         for request in self:
             request.total_amount = sum(request.request_line_ids.mapped('total'))
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('name', 'New') == 'New':
+                vals['name'] = self.env['ir.sequence'].next_by_code('purchase.request') or 'New'
+
+        return super(PurchaseRequest, self).create(vals_list)
+    
+    def unlink(self):
+        for request in self:
+            if request.state != 'draft':
+                raise UserError(_('Only draft purchase requests can be deleted.'))
+        return super().unlink()
+    
+    def action_request_approve(self):
+        for request in self:
+            if not request.request_line_ids:
+                raise UserError(_('You cannot submit a purchase request without any lines.'))
+            request.state = 'waiting'
+
+    def action_back_to_draft(self):
+        for request in self:
+            request.state = 'draft'
+
+    def action_approve(self):
+        for request in self:
+            if not request.approver_id:
+                request.approver_id = self.env.user
+            request.date_approved = fields.Date.context_today(self)
+            request.state = 'approved'    
+    
+    def action_reject_request(self):
+        return {
+            'name': 'Reject Purchase Request Reason',
+            'type': 'ir.actions.act_window',
+            'res_model': 'purchase.request.reject.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'active_id': self.id,
+            },
+        }

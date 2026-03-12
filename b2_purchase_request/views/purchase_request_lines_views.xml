@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <record id="view_purchase_request_line_form" model="ir.ui.view">
+            <field name="name">purchase.request.line.form</field>
+            <field name="model">purchase.request.line</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Request Line" create="false" delete="false" edit="false">
+                <sheet>
+                    <group>
+                    <field name="product_id"/>
+                    <field name="uom_id"/>
+                    <field name="quantity"/>
+                    <field name="quantity_approved"/>
+                    <field name="total" readonly="1"/>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+            </record>
+
+            <record id="view_purchase_request_line_list" model="ir.ui.view">
+            <field name="name">purchase.request.line.list</field>
+            <field name="model">purchase.request.line</field>
+            <field name="arch" type="xml">
+                <list string="Purchase Request Lines" delete="false" create="false" edit="false">
+                <field name="product_id"/>
+                <field name="uom_id"/>
+                <field name="quantity"/>
+                <field name="quantity_approved"/>
+                <field name="total" readonly="1"/>
+                </list>
+            </field>
+        </record>
+
+        <record id='action_purchase_request_lines' model='ir.actions.act_window'>
+            <field name='name'>Purchase Request Lines</field>
+            <field name='res_model'>purchase.request.line</field>
+            <field name='view_mode'>list,form</field>
+        </record>
+
+        <menuitem id="menu_purchase_request_lines_action" 
+          name="Purchase Requests Lines" 
+          parent="menu_purchase_request_root"
+          action="action_purchase_request_lines" 
+          sequence="20"/>
+    </data>
+</odoo>

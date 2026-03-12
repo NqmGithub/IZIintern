@@ -5,7 +5,7 @@
       <field name="name">customer.request.form</field>
       <field name="model">customer.request</field>
       <field name="arch" type="xml">
-        <form string="Customer Request">
+        <form string="Customer Request" create="false" delete="false" edit="false">
           <sheet>
             <group>
               <field name="product_id" options="{'no_create': True, 'no_open': True}"/>
@@ -23,7 +23,7 @@
       <field name="name">customer.request.list</field>
       <field name="model">customer.request</field>
       <field name="arch" type="xml">
-        <list string="Customer Requests">
+        <list string="Customer Requests" delete="false" create="false" edit="false">
           <field name="product_id"/>
           <field name='opportunity_id'/>
           <field name="description"/>

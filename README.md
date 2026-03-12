@@ -23,3 +23,12 @@ Bài 1
 Bài 2 
 - Tạo được models của purchase.request và purchase.request.line 
 - Thêm menu xem danh sách purchase request
+
+## Ngày 4:
+Bài 2
+- Xử lí được các quyền hạn của purchase.request ở các trạng thái
+- Tạo menu của purchase.request.line
+- Tạo được giao diện của purchase.request
+- Tạo được 2 nhóm quyền và các not xử lý trạng thái của purchase.request
+- Thêm trường name tự sinh theo cú pháp
+Vướng mắc: odoo 19 có thay đổi về cấu trúc nhóm quyền

@@ -21,11 +21,16 @@ Long description of module's purpose
 
     # always loaded
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
+        'data/ir_sequence_data.xml',
+        'views/purchase_request_reject_wizard_views.xml',
         'views/purchase_request_views.xml',
+        'views/purchase_request_lines_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
     ],
+    'application': True,
 }
 
