@@ -1,0 +1,229 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* b1_customer_request
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-14 08:19+0000\n"
+"PO-Revision-Date: 2026-03-14 08:19+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: b1_customer_request
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_customer_request_import_wizard_form
+msgid "Cancel"
+msgstr "Hủy"
+
+#. module: b1_customer_request
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_customer_request_import_error_wizard_form
+msgid "Close"
+msgstr "Đóng"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request__create_uid
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_error_wizard__create_uid
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_wizard__create_uid
+msgid "Created by"
+msgstr "Tạo bởi"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request__create_date
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_error_wizard__create_date
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_wizard__create_date
+msgid "Created on"
+msgstr "Tạo vào"
+
+#. module: b1_customer_request
+#: model:ir.model,name:b1_customer_request.model_customer_request
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_b1_customer_request_form
+msgid "Customer Request"
+msgstr "Yêu cầu khách hàng"
+
+#. module: b1_customer_request
+#: model:ir.model,name:b1_customer_request.model_customer_request_import_error_wizard
+msgid "Customer Request Import Error Wizard"
+msgstr "Lỗi nhập dữ liệu khách hàng"
+
+#. module: b1_customer_request
+#: model:ir.model,name:b1_customer_request.model_customer_request_import_wizard
+msgid "Customer Request Import Wizard"
+msgstr "Nhập dữ liệu khách hàng"
+
+#. module: b1_customer_request
+#: model:ir.actions.act_window,name:b1_customer_request.action_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_crm_lead__request_ids
+#: model:ir.ui.menu,name:b1_customer_request.menu_customer_request_root
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_crm_inherit_form
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_customer_request_list
+msgid "Customer Requests"
+msgstr "Yêu cầu khách hàng"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request__date
+msgid "Date"
+msgstr "Ngày"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request__description
+msgid "Description"
+msgstr "Mô tả"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_crm_lead__display_name
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request__display_name
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_error_wizard__display_name
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_wizard__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: b1_customer_request
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_customer_request_import_error_wizard_form
+msgid "Download Error as text file"
+msgstr "Tải lỗi dưỡi dạng file text"
+
+#. module: b1_customer_request
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_customer_request_import_wizard_form
+msgid "Download Template"
+msgstr "Tải bản mẫu"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_error_wizard__error_message
+msgid "Error Message"
+msgstr "Thông tin lỗi"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_wizard__excel_file
+msgid "Excel File"
+msgstr "File Excel"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_wizard__file_name
+msgid "File Name"
+msgstr "Tên file"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_crm_lead__id
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request__id
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_error_wizard__id
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: b1_customer_request
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_customer_request_import_wizard_form
+msgid "Import"
+msgstr "Nhập"
+
+#. module: b1_customer_request
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_customer_request_import_wizard_form
+msgid "Import Customer Requests from Excel"
+msgstr "Nhập yêu cầu khách hàng từ file Excel"
+
+#. module: b1_customer_request
+#. odoo-python
+#: code:addons/b1_customer_request/models/import_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_customer_request_import_error_wizard_form
+msgid "Import Errors"
+msgstr "Lỗi nhập dữ liệu"
+
+#. module: b1_customer_request
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_crm_inherit_form
+msgid "Import Requests From Excel"
+msgstr "Nhập dữ liệu yêu cầu khách hàng từ Excel"
+
+#. module: b1_customer_request
+#: model:ir.actions.act_window,name:b1_customer_request.action_customer_request_import_wizard
+msgid "Import Requests from Excel"
+msgstr "Nhập dữ liệu yêu cầu khách hàng từ Excel"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_crm_lead__is_stage_past_new
+msgid "Is Stage Past New"
+msgstr "Trạng thái qua New"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request__write_uid
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_error_wizard__write_uid
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Lần cuối cập nhật bởi"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request__write_date
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_error_wizard__write_date
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request_import_wizard__write_date
+msgid "Last Updated on"
+msgstr "Lần cuối cập nhật vào"
+
+#. module: b1_customer_request
+#: model:ir.model,name:b1_customer_request.model_crm_lead
+msgid "Lead"
+msgstr "Mối"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request__opportunity_id
+msgid "Opportunity"
+msgstr "Cơ hội"
+
+#. module: b1_customer_request
+#. odoo-python
+#: code:addons/b1_customer_request/models/import_wizard.py:0
+msgid "Please upload an Excel file."
+msgstr "Tải một file Êxcel lên"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request__product_id
+msgid "Product"
+msgstr "Sản phẩm"
+
+#. module: b1_customer_request
+#. odoo-python
+#: code:addons/b1_customer_request/models/import_wizard.py:0
+msgid "Product with ID %s not found."
+msgstr "Không thấy sản phẩm với ID %s"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_customer_request__quantity
+msgid "Quantity"
+msgstr "Số lượng"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_crm_lead__revenue
+msgid "Revenue"
+msgstr "Tiền"
+
+#. module: b1_customer_request
+#: model:ir.model.fields,field_description:b1_customer_request.field_crm_lead__sale_amount
+msgid "Sale Amount"
+msgstr "Số lượng sale"
+
+#. module: b1_customer_request
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_customer_request_import_error_wizard_form
+msgid "The following errors were found in the uploaded file:"
+msgstr "Các lỗi sau được tìm thấy trong file đã upload:"
+
+#. module: b1_customer_request
+#: model_terms:ir.ui.view,arch_db:b1_customer_request.view_customer_request_import_wizard_form
+msgid ""
+"Upload an Excel file with the following columns: Product ID, Description, "
+"Date, Quantity."
+msgstr "Tải lên file excel với các hàng sau: Product ID, Description, "
+"Date, Quantity."
+
+#. module: b1_customer_request
+#. odoo-python
+#: code:addons/b1_customer_request/models/crm_lead.py:0
+msgid "You cannot delete this record once it has left the New stage."
+msgstr "Bạn không thể xóa khi đã qua trạng thái New"
+
+#. module: b1_customer_request
+#. odoo-python
+#: code:addons/b1_customer_request/models/crm_lead.py:0
+msgid "You cannot modify this record once it has left the New stage."
+msgstr "Bạn không thể sửa khi đã qua trạng thái New"

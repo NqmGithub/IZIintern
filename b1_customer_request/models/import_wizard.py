@@ -1,6 +1,9 @@
 from email.mime import base
 import io
-from odoo import models, fields, api
+from math import e
+from odoo.addons.im_livechat.controllers import attachment
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 from odoo.tools.xml_utils import BytesIO
 import openpyxl;
 import base64
@@ -9,10 +12,19 @@ class CustomerRequestImportWizard(models.TransientModel):
     _name = 'customer.request.import.wizard'
     _description = 'Customer Request Import Wizard'
 
-    excel_file = fields.Binary(string='Excel File', required=True)
+    excel_file = fields.Binary(string='Excel File')
     file_name = fields.Char(string='File Name')
 
+    def download_template(self):
+        return {
+            'type': 'ir.actions.act_url',
+            'url': '/b1_customer_request/static/src/request_template.xlsx',
+            'target': 'self',
+        }
+    
     def action_import_requests(self):
+        if not self.excel_file:
+            raise UserError(_("Please upload an Excel file."))
         file_content = base64.b64decode(self.excel_file)
         workbook = openpyxl.load_workbook(io.BytesIO(file_content))
         sheet = workbook.active
@@ -30,7 +42,7 @@ class CustomerRequestImportWizard(models.TransientModel):
 
             product = self.env['product.template'].search([('id', '=', product_id)], limit=1)
             if not product:
-                error_msg.append(f"Product with ID {product_id} not found.")
+                error_msg.append(_("Product with ID %s not found.") % product_id)
                 continue
             request_data.append((0, 0, {
                 'product_id': product.id,
@@ -43,7 +55,7 @@ class CustomerRequestImportWizard(models.TransientModel):
         if error_msg:
             return {
                 'type': 'ir.actions.act_window',
-                'name': 'Import Errors',
+                'name': _('Import Errors'),
                 'view_mode': 'form',
                 'res_model': 'customer.request.import.error.wizard',
                 'target': 'new',
@@ -51,3 +63,25 @@ class CustomerRequestImportWizard(models.TransientModel):
             }
 
         return { 'type': 'ir.actions.act_window_close' }
+
+class CustomerRequestImportErrorWizard(models.TransientModel):
+    _name = 'customer.request.import.error.wizard'
+    _description = 'Customer Request Import Error Wizard'
+
+    error_message = fields.Text(string='Error Message', readonly=True)
+
+    def download_error(self):
+        filename = "import_errors.txt"
+        error_content = self.error_message.encode('utf-8')
+        attachment = self.env['ir.attachment'].create({
+            'name': filename,
+            'type': 'binary',
+            'datas': base64.b64encode(error_content),
+            'mimetype': 'text/plain',
+        })
+        return {
+            'type': 'ir.actions.act_url',
+            'url': f'/web/content/{attachment.id}?download=true',
+            'target': 'self',
+        }
+

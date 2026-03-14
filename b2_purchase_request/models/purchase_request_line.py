@@ -1,5 +1,5 @@
-from odoo import models, fields, api
-from odoo.orm.domains import UserError
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 class PurchaseRequestLine(models.Model):
     _name = 'purchase.request.line'
@@ -11,7 +11,24 @@ class PurchaseRequestLine(models.Model):
     quantity = fields.Float(string='Quantity', default=1.0, required=True)
     quantity_approved = fields.Float(string='Quantity Approved')
     total = fields.Float(string='Total', compute='_compute_total')
+    price_unit = fields.Float(string='Unit Price')
     state = fields.Selection(related='request_id.state', string='Request State', store=True)
+    
+    @api.onchange('product_id')
+    def _onchange_product_id(self):
+        if not self.product_id:
+            self.uom_id = False
+            self.price_unit = 0.0
+            return
+        self.uom_id = self.product_id.uom_id
+        
+        lastest_price = self.env['purchase.order.line'].search([
+            ('product_id', '=', self.product_id.id)],
+              order='id desc', limit=1)
+        if lastest_price:
+            self.price_unit = lastest_price.price_unit
+        else:
+            self.price_unit = self.product_id.list_price
 
     @api.depends('quantity', 'product_id.list_price')
     def _compute_total(self):

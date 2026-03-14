@@ -3,7 +3,7 @@ from odoo import http
 from odoo.http import request
 
 class CrmApi(http.Controller):
-    @http.route('/api/v1/create_lead', auth='none', type='json', methods=['POST'], csrf=False)
+    @http.route('/api/v1/create_lead', auth='none', type='jsonrpc', methods=['POST'], csrf=False)
     def create_lead(self, **kwargs):
         data = kwargs
 

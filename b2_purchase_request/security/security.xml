@@ -15,4 +15,24 @@
         <!-- <field name="category_id" ref="b2_purchase_request.module_category_purchase_request"/> -->
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
+
+    <record id="rule_purchase_request_user" model="ir.rule">
+        <field name="name">User see own request only</field>
+        <field name="model_id" ref="model_purchase_request"/>
+        <field name="groups" eval="[(4, ref('b2_purchase_request.group_purchase_request_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="rule_purchase_request_manager" model="ir.rule">
+        <field name="name">Manager see all requests</field>
+        <field name="model_id" ref="model_purchase_request"/>
+        <field name="groups" eval="[(4, ref('b2_purchase_request.group_purchase_request_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
 </odoo>

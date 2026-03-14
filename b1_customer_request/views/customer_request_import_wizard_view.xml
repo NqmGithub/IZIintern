@@ -13,7 +13,15 @@
             <form>
                 <sheet>
                     <h1>Import Customer Requests from Excel</h1>
-                    <p>Upload an Excel file with the following columns: Product ID, Description, Date, Quantity.</p>
+                    <p>
+                    Upload an Excel file with the following columns: Product ID, Description, Date, Quantity.
+                        <div>
+                            <button name="download_template"
+                                    string="Download Template" 
+                                    type="object"
+                                    class="btn-secondary"/>
+                        </div>
+                    </p>
                     <group>
                         <field name="excel_file" filename="file_name"/>
                         <field name="file_name" invisible="1"/>
@@ -21,6 +29,29 @@
                     <footer>
                         <button name="action_import_requests" string="Import" type="object" class="btn-primary"/>
                         <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_customer_request_import_error_wizard_form" model="ir.ui.view">
+        <field name="name">customer.request.import.error.wizard.form</field>
+        <field name="model">customer.request.import.error.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>Import Errors</h1>
+                    <p>The following errors were found in the uploaded file:</p>
+                    <group>
+                        <field name="error_message" readonly="1" widget="text"/>
+                    </group>
+                    <footer>
+                        <button name="download_error"
+                                string="Download Error as text file" 
+                                type="object"
+                                class="btn-secondary"/>
+                        <button string="Close" class="btn-secondary" special="cancel"/>
                     </footer>
                 </sheet>
             </form>

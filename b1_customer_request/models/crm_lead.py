@@ -1,3 +1,5 @@
+from xml.etree import ElementTree
+
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
@@ -53,11 +55,20 @@ class CrmLead(models.Model):
     def write(self, vals):
         for lead in self:
             if lead.stage_id.sequence > 1 and 'stage_id' not in vals:
-                raise UserError("You cannot modify this record once it has left the New stage.")
+                raise UserError(_("You cannot modify this record once it has left the New stage."))
         return super().write(vals)
     
     def unlink(self):
         for lead in self:
             if lead.stage_id.sequence > 1:
-                raise UserError("You cannot delete this record once it has left the New stage.")
+                raise UserError(_("You cannot delete this record once it has left the New stage."))
         return super().unlink()
+
+    @api.model
+    def _get_view(self, view_id=None, view_type='form', **options):
+        arch, view = super()._get_view(view_id, view_type, **options)
+        for node in arch.xpath("//field"):
+            if node.get('name') in ['product_id', 'date', 'stage_id', 'request_ids', "description", "quantity", "sale_amount", "revenue"]:
+                continue
+            node.set('readonly', "is_stage_past_new")
+        return arch, view

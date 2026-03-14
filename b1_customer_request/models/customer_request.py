@@ -4,6 +4,7 @@ from odoo import fields, models
 class CustomerRequest(models.Model):
     _name = 'customer.request'
     _description = 'Customer Request'
+    _rec_name= 'description'
 
     product_id = fields.Many2one('product.template', string='Product', required=True)
     opportunity_id = fields.Many2one('crm.lead', string='Opportunity', required=True)

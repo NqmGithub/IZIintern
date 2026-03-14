@@ -4,34 +4,31 @@
         <field name="model">crm.lead</field>
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//form" position="inside">
-                <field name="stage_id" invisible="1"/>
+            <xpath expr="//field[@name='expected_revenue']" position="after">
                 <field name="is_stage_past_new" invisible="1"/>
             </xpath>
-            <xpath expr="//field[@name='expected_revenue']" position="after">
-                <header name="import_header">
-                    <button name="%(action_customer_request_import_wizard)d"
-                            string="Import Requests From Excel"
-                            type="action"
-                            class="btn-secondary"
-                            invisible="is_stage_past_new"/>
-                </header>
-                <group name="customer_request_group">
-                    <field name="request_ids"/>
-                    <field name="sale_amount"/>
-                    <field name="revenue"/>
+            <xpath expr="//notebook" position="before">
+                <group>
+                    <field name="sale_amount" readonly="1"/>
+                    <field name="revenue" readonly="1"/>
                 </group>
-            </xpath>
-        </field>
-    </record>
-
-    <record id="view_crm_lead_form_readonly_lock" model="ir.ui.view">
-        <field name="name">crm.lead.form.readonly.lock</field>
-        <field name="model">crm.lead</field>
-        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//form//field" position="attributes">
-                <attribute name="readonly">is_stage_past_new</attribute>
+                <button name="%(action_customer_request_import_wizard)d"
+                        string="Import Requests From Excel"
+                        type="action"
+                        class="btn-secondary"
+                        invisible="is_stage_past_new"/>
+            </xpath>    
+            <xpath expr="//notebook" position="inside">
+                <page string="Customer Requests">
+                    <field name="request_ids" readonly="is_stage_past_new">
+                        <list editable='bottom'>
+                            <field name="product_id"/>
+                            <field name="date"/>
+                            <field name="description"/>
+                            <field name="quantity"/>
+                        </list>
+                    </field>
+                </page>
             </xpath>
         </field>
     </record>

@@ -48,6 +48,13 @@ class PurchaseRequest(models.Model):
                 raise UserError(_('Only draft purchase requests can be deleted.'))
         return super().unlink()
     
+    def export_data(self, fields=None, format=False, raw_data=False):
+        if fields and 'state' in fields:
+            for request in self:
+                if request.state != 'approved':
+                    raise UserError(_('Only approved purchase requests can be exported.'))
+        return super().export_data(fields=fields, format=format, raw_data=raw_data)
+
     def action_request_approve(self):
         for request in self:
             if not request.request_line_ids:
@@ -67,7 +74,7 @@ class PurchaseRequest(models.Model):
     
     def action_reject_request(self):
         return {
-            'name': 'Reject Purchase Request Reason',
+            'name': _('Reject Purchase Request Reason'),
             'type': 'ir.actions.act_window',
             'res_model': 'purchase.request.reject.wizard',
             'view_mode': 'form',

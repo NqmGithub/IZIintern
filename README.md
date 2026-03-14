@@ -32,3 +32,11 @@ Bài 2
 - Tạo được 2 nhóm quyền và các not xử lý trạng thái của purchase.request
 - Thêm trường name tự sinh theo cú pháp
 Vướng mắc: odoo 19 có thay đổi về cấu trúc nhóm quyền
+
+## Ngày 5
+Bài 2:
+-Hoàn thiện nốt
+-Review + thêm yêu cầu: tạo chức năng download template, tải xuống file text chữa lỗi impport, chỉnh sửa quyền, thêm chức năng approve nhiều 
+
+## Ngày 6
+- Hoàn thiện yêu cầu giao thêm
