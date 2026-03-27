@@ -30,10 +30,10 @@ class PurchaseRequestLine(models.Model):
         else:
             self.price_unit = self.product_id.list_price
 
-    @api.depends('quantity', 'product_id.list_price')
+    @api.depends('quantity', 'price_unit')
     def _compute_total(self):
         for line in self:
-            price = line.product_id.list_price or 0.0
+            price = line.price_unit or 0.0
             line.total = line.quantity * price
 
     def unlink(self):
@@ -44,6 +44,8 @@ class PurchaseRequestLine(models.Model):
     
     def write(self, vals):
         for line in self:
+            if line.state == 'waiting' and 'quantity_approved' in vals:
+                return super().write(vals)
             if line.state != 'draft':
                 raise UserError(_('Only lines of draft purchase requests can be modified.'))
         return super().write(vals)

@@ -1,0 +1,48 @@
+// .o_control_panel_actions_block .o_form_status_indicator {
+//     display: flex;
+//     gap: 12px; // Space between the buttons
+//     align-items: center;
+
+//     // --- SAVE MANUALLY BUTTON ---
+//     .o_form_button_save {
+//         @extend .btn;          // Use Bootstrap base button styling
+//         @extend .btn-primary;  // Make it look like a primary button
+
+//         font-weight: bold;
+//         text-transform: uppercase; // Optional: Makes it look important
+//         font-size: 0.8rem;
+//         padding: 4px 12px;
+//         transition: all 0.2s ease-in-out;
+//         box-shadow: 0 2px 4px rgba(0,0,0,0.1); // subtle depth
+
+//         // Ensure text color is white and no underline
+//         color: white !important;
+//         text-decoration: none !important;
+
+//         &:hover, &:focus {
+//             transform: translateY(-1px); // small lift on hover
+//             box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+//         }
+//     }
+
+//     // --- DISCARD BUTTON ---
+//     .o_form_button_cancel {
+//         @extend .btn;           // Base styling
+//         @extend .btn-light;     // Make it a contrasting, lighter button
+
+//         font-weight: 500;
+//         font-size: 0.8rem;
+//         padding: 4px 12px;
+//         transition: all 0.2s;
+
+//         // Ensure proper text styling
+//         color: #666 !important;
+//         text-decoration: none !important;
+
+//         &:hover {
+//             color: #333 !important;
+//             background-color: #e2e6ea !important;
+//             border-color: #dae0e5 !important;
+//         }
+//     }
+// }

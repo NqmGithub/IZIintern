@@ -6,3 +6,4 @@ access_b2_purchase_request_line_user,purchase.request.line.user,model_purchase_r
 access_b2_purchase_request_manager,purchase.request.manager,model_purchase_request,group_purchase_request_manager,1,1,1,1
 access_b2_purchase_request_line_manager,purchase.request.line.manager,model_purchase_request_line,group_purchase_request_manager,1,1,1,1
 access_b2_purchase_request_reject_wizard,purchase.request.reject.wizard,model_purchase_request_reject_wizard,group_purchase_request_manager,1,1,1,1
+access_b2_purchase_request_export_wizard,purchase.request.export.wizard,model_purchase_request_export_wizard,,1,1,1,1

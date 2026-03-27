@@ -19,10 +19,13 @@ class PurchaseRequest(models.Model):
         ('waiting', 'Waiting'),
         ('approved', 'Approved'),
         ('canceled', 'Canceled'),   
-    ], string='Status', default='draft', tracking=True)
+    ], string='Status', default='draft', group_expand='_expand_states')
     total_quantity = fields.Float(string='Total Quantity', compute='_compute_total_quantity')
     total_amount = fields.Float(string='Total Amount', compute='_compute_total_amount')
     canceled_reason = fields.Text(string='Reason for Cancellation')
+
+    def _expand_states(self, states, domain):
+        return [key for key, val in self._fields['state'].selection]
 
     @api.depends('request_line_ids.quantity')
     def _compute_total_quantity(self):
@@ -83,3 +86,16 @@ class PurchaseRequest(models.Model):
                 'active_id': self.id,
             },
         }
+
+    def action_export(self):
+        return {
+            'name': _('Export Purchase Request'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'purchase.request.export.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'active_ids': self.ids,
+            },
+        }
+    

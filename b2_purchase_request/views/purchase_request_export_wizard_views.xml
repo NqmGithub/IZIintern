@@ -1,0 +1,34 @@
+<odoo>
+    <record id="view_purchase_request_export_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.request.export.wizard.form</field>
+        <field name="model">purchase.request.export.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Export Purchase Requests">
+                <group>
+                    <field name="file_name" default="purchase_requests.xlsx"/>
+                </group>
+
+                <group>
+                    <group>
+                        <field name="include_department"/>
+                        <field name="include_requester"/>
+                        <field name="include_approver"/>
+                        <field name="include_date"/>
+                        <field name="include_date_approved"/>
+                    </group>
+                    <group>
+                        <field name="include_description"/>
+                        <field name="include_state"/>
+                        <field name="include_total_quantity"/>
+                        <field name="include_total_amount"/>
+                        <field name="include_canceled_reason" invisible="include_state == False"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Export" type="object" name="export_purchase_requests" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+<odoo>
+    <record id="action_purchase_request_report" model="ir.actions.report">
+        <field name="name">Purchase Request Report</field>
+        <field name="model">purchase.request</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">b2_purchase_request.purchase_request_report_template</field>
+        <field name="report_file">b2_purchase_request.purchase_request_report_template</field>
+        <field name="binding_model_id" ref="model_purchase_request"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

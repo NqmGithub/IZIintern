@@ -1,5 +1,5 @@
 {
-    'name': "b2_purchase_request",
+    'name': "student",
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
@@ -17,28 +17,21 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'purchase', 'hr', 'product'],
+    'depends': ['base', 'hr', 'product', 'mail'],
 
     # always loaded
     'data': [
-        'security/security.xml',
         'security/ir.model.access.csv',
-        'data/ir_sequence_data.xml',
-        'views/purchase_request_reject_wizard_views.xml',
-        'views/purchase_request_views.xml',
-        'views/purchase_request_lines_views.xml',
-        'views/purchase_request_reports.xml',
-        'views/purchase_request_report_template.xml',
-        'views/purchase_request_export_wizard_views.xml',
+        'data/sequence.xml',
+        'data/ir_cron_data.xml',
+        'views/student_views.xml',
+        'views/student_class_views.xml',
+        'views/material_learning_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
+        'demo/demo.xml',
     ],
     'application': True,
-    'asset': {
-        'web.assets_backend': [
-            'b2_purchase_request/static/src/scss/purchase_request_style.scss',
-        ],
-    },
 }
 

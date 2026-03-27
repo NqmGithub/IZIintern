@@ -1,0 +1,52 @@
+<odoo>
+    <template id="purchase_request_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Purchase Request Report</h2>
+                        <div class="row">
+                            <div class="col-6">
+                                <p><strong>Request ID:</strong> <span t-field="doc.name"/></p>
+                                <p><strong>Department:</strong> <span t-field="doc.department_id.name"/></p>
+                                <p><strong>Requester:</strong> <span t-field="doc.requester_id.name"/></p>
+                                <p><strong>Approver:</strong> <span t-field="doc.approver_id.name"/></p>
+                                <p><strong>Request Date:</strong> <span t-field="doc.date"/></p>
+                                <p><strong>Approved Date:</strong> <span t-field="doc.date_approved"/></p>
+                            </div>
+                            <div class="col-6 text-right">
+                                <p><strong>Status:</strong> 
+                                <span t-if="doc.state == 'draft'" class="badge badge-secondary">Draft</span>
+                                <span t-if="doc.state == 'approved'" class="badge badge-success">Approved</span>
+                                <span t-if="doc.state == 'cancelled'" class="badge badge-danger">Cancelled</span>
+                                </p>
+                                <p><strong>Total quantity:</strong> <span t-field="doc.total_quantity"/></p>
+                                <p><strong>Total Amount:</strong> <span t-field="doc.total_amount"/></p>
+                            </div>
+                        </div>
+                        <h3>Requested Products</h3>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Unit of Measure</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.request_line_ids" t-as="line">
+                                    <td><span t-field="line.product_id.name"/></td>
+                                    <td><span t-field="line.uom_id.name"/></td>
+                                    <td><span t-field="line.quantity"/></td>
+                                    <td><span t-field="line.price_unit"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

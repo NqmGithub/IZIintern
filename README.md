@@ -40,3 +40,9 @@ Bài 2:
 
 ## Ngày 6
 - Hoàn thiện yêu cầu giao thêm
+
+## Bonus
+- Module student quản lý student, class, books với các loại inheritance và cron job 
+- HTTP API cho B2 với các chức năng CRUD cơ bản
+- QWeb in ra pdf cho purchase request
+- Kanban view cho purchase request
