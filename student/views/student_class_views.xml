@@ -27,13 +27,22 @@
                     <notebook>
                         <page string="Students">
                             <field name="student_selection_ids" options="{'no_create': True, 'no_open': True}"
-                                domain="[('class_id', '=', False)]">
+                                domain="['|', ('class_id', '=', False), ('class_id', '=', id)]">
                                 <list editable="bottom" create="false" edit="false"> 
                                     <field name="partner_id" readonly="0" />
                                     <field name="name" readonly="1"/>
                                     <field name="dob" readonly="1"/>
                                     <field name="english_experience" readonly="1"/>
                                     <field name="parents_contact" readonly="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Class Schedule">
+                            <field name="class_schedule" options="{'no_create': False, 'no_open': True}">
+                                <list editable="bottom">
+                                    <field name="day_id" options="{'no_create': True}"/>
+                                    <field name="start_time" widget="float_time"/>
+                                    <field name="end_time" widget="float_time"/>
                                 </list>
                             </field>
                         </page>

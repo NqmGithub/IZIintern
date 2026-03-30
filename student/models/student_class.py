@@ -29,7 +29,7 @@ class StudentClass(models.Model):
         ('secondary', 'Secondary'),
         ('high', 'High'),
     ], string='Class Type', default='primary')
-    
+    class_schedule = fields.One2many('student.class.schedule', 'class_id', string='Class Schedule')
     @api.depends('student_ids')
     def _compute_student_selection_ids(self):
         for record in self:

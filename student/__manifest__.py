@@ -18,15 +18,17 @@ Long description of module's purpose
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'hr', 'product', 'mail'],
-
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'data/sequence.xml',
         'data/ir_cron_data.xml',
+        'data/student_day_of_week_data.xml',
         'views/student_views.xml',
         'views/student_class_views.xml',
         'views/material_learning_views.xml',
+        'views/student_class_schedule_views.xml',
+        'views/student_attendance_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

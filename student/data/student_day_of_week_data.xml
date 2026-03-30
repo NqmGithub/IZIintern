@@ -1,0 +1,25 @@
+<odoo>
+    <data noupdate="1">
+        <record id="day_of_week_monday" model="student.day.of.week">
+            <field name="name">0</field>
+        </record>
+        <record id="day_of_week_tuesday" model="student.day.of.week">
+            <field name="name">1</field>
+        </record>
+        <record id="day_of_week_wednesday" model="student.day.of.week">
+            <field name="name">2</field>
+        </record>
+        <record id="day_of_week_thursday" model="student.day.of.week">
+            <field name="name">3</field>
+        </record>
+        <record id="day_of_week_friday" model="student.day.of.week">
+            <field name="name">4</field>
+        </record>
+        <record id="day_of_week_saturday" model="student.day.of.week">
+            <field name="name">5</field>
+        </record>
+        <record id="day_of_week_sunday" model="student.day.of.week">
+            <field name="name">6</field>
+        </record>
+    </data>
+</odoo>

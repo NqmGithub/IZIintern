@@ -38,6 +38,6 @@
     </record>
 
     <menuitem name="Students" id="menu_student_root" sequence="10"/>
-    <menuitem name="Student Operations" id="menu_student_operations" parent="menu_student_root" sequence="10"/>
-    <menuitem name="Student List" id="menu_student_list" parent="menu_student_operations" action="action_student" sequence="10"/>
+    <!-- <menuitem name="Student Operations" id="menu_student_operations" parent="menu_student_root" sequence="10"/>
+    <menuitem name="Student List" id="menu_student_list" parent="menu_student_operations" action="action_student" sequence="10"/> -->
 </odoo>
